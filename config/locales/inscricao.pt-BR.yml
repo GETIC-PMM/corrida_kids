@@ -1,0 +1,41 @@
+pt-BR:
+  activerecord:
+    models:
+      inscricao:
+        one: Inscrição
+        other: Inscrições
+    attributes:
+      inscricao:
+        id: ID 
+        nome: Nome completo
+        whatsapp: WhatsApp
+        email: E-mail 
+        matricula: Matrícula
+        categoria: Categoria
+        entregar: Entregue?
+        tamanho_camiseta: Tamanho da camiseta
+        deleted_at: DATA DE EXCLUSÃO
+        created_at: DATA DE CADASTRO 
+        updated_at: DATA DE ATUALIZAÇÃO
+        sub_categoria: Sub Categoria
+        sub_categorias:
+          ate_25_anos: Até 25 anos
+          entre_26_e_35_anos: Entre 25 e 35 anos
+          entre_36_e_45_anos: Entre 36 e 45 anos
+          acima_de_46_anos: Acima de 46 anos
+          pcds: Pcd's
+        provas: 
+          corrida_5km: 5 Km - Corrida
+          caminhada_3km: 3 Km - Caminhada
+        categorias: 
+          masculino: Masculino
+          feminino: Feminino
+          pcd: PCD
+        tamanho_camisas:
+          pp: pp
+          p: p
+          m: m
+          g: g
+          gg: gg
+          xg: xg
+        

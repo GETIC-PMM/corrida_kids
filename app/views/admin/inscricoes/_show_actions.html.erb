@@ -1,0 +1,24 @@
+<%- model_class=Inscricao -%>
+
+<% remote ||= remote %>
+
+<% if can? :edit, inscricao -%>
+    <%= link_to edit_admin_inscricao_path(inscricao), :class=> 'btn btn-warning me-2', :remote => remote do %>
+        <i class="bi bi-pencil"></i> Editar
+    <% end %>
+<% end %>
+
+<% if can? :destroy, inscricao -%>
+    <%= button_to admin_inscricao_path(inscricao), :remote=> remote,
+        :method => 'delete',
+        :data => { :confirm => "Tem certeza que deseja remover?"},
+        :class => 'btn btn-danger me-2' do %>
+        <i class="bi bi-eraser"></i> Remover
+    <% end %>
+<% end %>
+
+<% if can? :new, Inscricao -%>
+    <%= link_to new_admin_inscricao_path, class: "btn btn-primary me-2" do %>
+        <i class="bi bi-plus"></i> Adicionar 
+    <% end %>
+<% end %>

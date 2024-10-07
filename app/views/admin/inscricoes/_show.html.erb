@@ -1,0 +1,37 @@
+<%- model_class = Inscricao -%>
+
+<% resource ||= resource %>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+        
+          <dt><strong>Nome da criança:</strong></dt>
+          <dd><%= resource.try(:nome_crianca) %></dd>
+        
+              
+          <dt><strong>Data de nascimento da criança:</strong></dt>
+          <dd><%= resource.try(:data_nascimento_crianca) %></dd>
+        
+              
+          <dt><strong>CPF da criança:</strong></dt>
+          <dd><%= resource.try(:cpf_crianca) %></dd>
+        
+              
+          <dt><strong>Nome do responsável:</strong></dt>
+          <dd><%= resource.try(:nome_responsavel) %></dd>
+        
+              
+          <dt><strong>CPF do responsável:</strong></dt>
+          <dd><%= resource.try(:cpf_responsavel) %></dd>
+
+          <dt><strong><%= model_class.human_attribute_name(:telefone_contato) %> :</strong></dt>
+          <dd><%= resource.try(:telefone_contato).try(:humanize) %></dd>
+
+      
+    </dl>
+  </div>
+  <div class="col-md-12">
+    <%= render partial: "admin/audits/table", locals: {audits: resource.try(:own_and_associated_audits), show_collapse: 'show'} %>
+  </div>
+</div>

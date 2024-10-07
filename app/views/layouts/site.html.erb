@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8"/>
+
+    <title>Corrida do Servidor - Prefeitura de Mossoró</title>
+
+    <link rel="shortcut icon" type="image/png" href="https://prefeiturademossoro.com.br/assets/img/faviconn.png" />
+    <meta property="og:image" content="https://prefeiturademossoro.com.br/assets/img/favicon.jpg">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css" integrity="sha512-5PV92qsds/16vyYIJo3T/As4m2d8b6oWYfoqV+vtizRB6KhF1F9kYzWzQmsO6T3z3QG2Xdhrx7FQ+5R1LiQdUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="shortcut icon" href="#" />
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- main css -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    <%= stylesheet_link_tag "site", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+
+    <!-- partial HEADER -->
+    <div class="topo">
+        <div class="container">
+            <div class="d-flex justify-content-between flex-wrap">
+                <div class="d-flex align-items-center redes-sociais">
+                    <a class="d-flex align-items-center justify-content-center" href="https://www.instagram.com/prefeiturademossoro/" target="_blank"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                    <a class="d-flex align-items-center justify-content-center" href="https://www.facebook.com/PrefeituraDeMossoro/" target="_blank"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                    <a class="d-flex align-items-center justify-content-center" href="https://twitter.com/PrefMossoro" target="_blank"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                    <a class="d-flex align-items-center justify-content-center" href="https://YouTube.com/PrefeituradeMossoróOficial" target="_blank"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                    <a class="d-flex align-items-center justify-content-center" href="https://Flickr.com/prefeiturademossoro" target="_blank"><i class="fab fa-flickr" aria-hidden="true"></i></a>
+                    <a class="d-flex align-items-center justify-content-center" href="https://linktr.ee/prefeiturademossoro" target="_blank"><i class="fas fa-link" aria-hidden="true"></i></a>
+                </div>
+                <div class="d-flex align-items-center justify-content-end acess">
+                    <!-- <button class="btn-accessibility" id="accessibility">
+                        <span class="me-2">Acessibilidade</span>
+                        <img class="me-4" src="https://www.prefeiturademossoro.com.br/assets/img/icon/icon_acessibilidade_branco.svg" alt="">
+                    </button> -->
+
+                    <span class="me-2 d-none d-md-block">Tamanho da fonte</span>
+
+                    <!-- AUMENTAR FONTE -->
+                    <span id="aumentar-fonte">
+                        <a class="btn" title="Aumentar Fonte" alt="Aumentar" onclick="aumentarZoom()">
+                            <img src="<%= image_path('site/aplus_branco.svg') %>" alt="">
+                        </a>
+                    </span>
+
+                    <svg width="1" height="23" viewBox="0 0 1 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1" height="23" fill="#fff"></rect>
+                    </svg>
+
+                    <!-- DIMINUIR FONTE -->
+                    <span id="diminuir-fonte">
+                        <a class="btn" title="Diminuir Fonte" alt="Diminuir" onclick="diminuirZoom()">
+                            <img src="<%= image_path('site/a-_branco.svg') %>" alt="">
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div><!-- container -->
+    </div>
+    <!-- /partial HEADER -->
+
+
+    <main id="content">
+    <!-- partial HEADER -->
+    <header id="header">
+        <div class="container pt-5">
+            <div class="row">
+                <div class="col-md-8 offset-md-2 py-5 text-center d-flex justify-content-center gap-5 align-items-center">
+                    <img src="<%= asset_path('site/logo.png') %>" class="img-fluid" alt="" title="">
+                    <img src="<%= asset_path('site/pmm.png') %>" class="img-fluid" alt="" title="">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- /partial HEADER -->
+    <section id="content">
+    <%= yield %>
+    </section>
+
+    </main>
+
+
+    <footer id="footer" class="py-4 bg-white mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 d-flex justify-content-between flex-wrap">
+                    <span class="">© Corrida do Servidor. | PMM | Todos os direitos reservados <a href="http://mossoro.rn.gov.br/" class="">Prefeitura de Mossoró</a>.</span>
+                    <span class=""></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <%= render "shared/notificacao" %>
+
+    <!-- bootstrap -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <!-- <script src="<%#= javascript_path('site.js') %>" data-turbo-track="reload"></script> -->
+
+    <script>
+
+
+
+      $(document).ready(function(){
+        $('.cpf').mask('000.000.000-00');
+
+        $('.tel').mask('(00) 0000-0000#');
+        $('.tel').keyup(function(){
+          // console.log('aqui', $('.tel').val().length);
+          if ($('.tel').val().length == 15) {
+            $('.tel').mask('(00) 00000-0000');
+          } else {
+            $('.tel').mask('(00) 0000-0000#');
+          }
+        });
+
+        // máscara mês/ano
+        $('.mes-ano').mask('00/0000');
+
+        // máscara data
+        $('.data').mask('00/00/0000');
+
+        // form #add_experiencia adicionar experiencia
+        $('#add_experiencia').click(function() {
+          $('.exp_profissional').last().clone().appendTo('#exp_profissionais').find('input').val('');
+        });
+
+        // form #add_aptidao adicionar aptidão
+        $('#add_aptidao').click(function() {
+          $('.aptidao').last().clone().appendTo('#aptidoes').find('input').val('').find('textarea').val('');
+        });
+
+
+      });
+
+
+    </script>
+    <script>
+        // aumentar fontes bootstrap
+        function aumentarFonte() {
+            // get all fonts
+            var elemento = document.getElementById("content");
+            var fonte = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+            var tamanho = parseFloat(fonte);
+            // elemento.style.fontSize = (tamanho + 1) + 'px';
+            document.body.style.fontSize= (tamanho + 1) + 'px';
+        }
+
+        // diminuir fonte
+        function diminuirFonte() {
+            var elemento = document.getElementById("content");
+            var fonte = window.getComputedStyle(elemento, null).getPropertyValue('font-size');
+            var tamanho = parseFloat(fonte);
+            // elemento.style.fontSize = (tamanho - 1) + 'px';
+            document.body.style.fontSize= (tamanho - 1) + 'px';
+        }
+
+        // aumentar zoom da tela
+        function aumentarZoom() {
+            var elemento = document.getElementById("content");
+            var fonte = window.getComputedStyle(elemento, null).getPropertyValue('zoom');
+            var tamanho = parseFloat(fonte);
+            // elemento.style.zoom = (tamanho + 0.1);
+            document.body.style.zoom= (tamanho + 0.1);
+        }
+
+        // diminuir zoom da tela
+        function diminuirZoom() {
+            var elemento = document.getElementById("content");
+            var fonte = window.getComputedStyle(elemento, null).getPropertyValue('zoom');
+            var tamanho = parseFloat(fonte);
+            // elemento.style.zoom = (tamanho - 0.1);
+            document.body.style.zoom= (tamanho - 0.1);
+        }
+
+        // acessibilidade
+
+        localStorage.getItem("contraste") === "true" ? ativarContraste() : null;
+
+        function ativarContraste() {
+            const elemento = document.querySelectorAll("body")[0];
+            elemento.classList.toggle("contraste");
+
+            saveConstrasteOnLocalStorage(elemento.classList.contains("contraste"));
+        }
+
+        function saveConstrasteOnLocalStorage(value) {
+            localStorage.setItem("contraste", value);
+        }
+    </script>
+
+  </body>
+</html>

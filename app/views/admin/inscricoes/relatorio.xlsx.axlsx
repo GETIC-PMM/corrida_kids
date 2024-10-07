@@ -1,0 +1,19 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Relatorio - Corrida do Servidor") do |sheet|
+  sheet.add_row ["Nome", "Email", "Telefone", "Matricula", "Categoria", "Sub Categoria", "Prova", "Tamanho da Camisa", "Data de Cadastro", "Kit Entregue"]
+
+  @inscricoes.each do |inscricao|
+    sheet.add_row [
+      inscricao.nome,
+      inscricao.email,
+      inscricao.whatsapp,
+      inscricao.matricula,
+      enum_i18n(Inscricao, :categoria, inscricao.categoria),
+      enum_i18n(Inscricao, :sub_categoria, inscricao.sub_categoria),
+      enum_i18n(Inscricao, :prova, inscricao.prova),
+      enum_i18n(Inscricao, :tamanho_camisa, inscricao.tamanho_camisa),
+      inscricao.created_at.strftime("%d/%m/%Y %H:%M:%S"),
+      inscricao.entregar ? "Sim" : "Não"
+    ]
+  end
+end

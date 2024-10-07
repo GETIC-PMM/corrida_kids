@@ -1,0 +1,144 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2 text-center mb-5">
+            <img src="<%= asset_path('site/info.png') %>" alt="" class="img-fluid">
+        </div>
+        <!-- <div class="col-lg-8 offset-lg-2 text-center mb-5">
+            <span class="montserrat color-primary fs-4">
+                Masculino | 
+            </span>
+            <span class="montserrat color-primary fs-4">
+                 Feminino |
+            </span>
+            <span class="montserrat color-primary fs-4">
+                 PCDs
+            </span>
+        </div> -->
+    </div>
+    <div id="form-container">
+        <% limite_vagas = 650 %>
+        <% if Inscricao.count < limite_vagas %>
+            <div class="row mb-4">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h2 class="montserrat-bold fs-50 text-white">Garanta sua <span class="color-secondary">participação!</span></h2>
+                    <p class="montserrat fs-5 fw-normal text-white">Preencha com os dados da criança e responsável</p>
+                </div>
+            </div>
+            <%= form_for(@inscricao, url: "/inscrever", data: { turbo: false }, html: {class: "w-100 py-2", id: "form-inscricao"}) do |f| %>
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="row">   
+                        <div class="col-md-6 mb-4">
+                            <%= f.text_field :nome_crianca, class: "form-control", placeholder: "Nome Completo da criança" %>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <%= f.text_field :data_nascimento_crianca, class: "form-control data", placeholder: "Data de Nascimento da criança" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <%= f.text_field :cpf_crianca, class: "form-control cpf", placeholder: "CPF da criança" %>
+                        </div>  
+                        <div class="col-md-6 mb-4">
+                            <%= f.text_field :nome_responsavel, class: "form-control", placeholder: "Nome do responsável" %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        
+                        <div class="col-md-6 mb-4">
+                            <%= f.text_field :cpf_responsavel, class: "form-control cpf", placeholder: "CPF do responsável" %>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <%= f.text_field :telefone_contato, class: "form-control tel", placeholder: "Telefone para contato (whatsapp)" %>
+                        </div>  
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label text-white fs-5 m-0" style="line-height: 1;" for="flexCheckDefault">
+                                    Declaro que estou ciente e de acordo com o <%= link_to "Regulamento", "/REGULAMENTO 1º CORRIDA KIDS.pdf", class:"text-white", target:"_blank" %> da corrida.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-12 mb-4">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                                <label class="form-check-label text-white fs-5 m-0" style="line-height: 1;" for="flexCheckDefault2">
+                                    Declaro que estou ciente e irei realizar a assinatura e preenchimento do <%= link_to "Termo de Responsabilidade", "/TERMO DE RESPONSABILIDADE CORRIDA KIDS.docx", class:"text-white", target:"_blank" %> e levarei no dia do evento.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">   
+                        <div class="col-md-6 mb-4">
+                            <%= f.select :categoria, enum_options_for_select(Inscricao, :categorias), {include_blank: "Escolha a categoria"}, {class: "form-control form-select" } %>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <%= f.select :prova, enum_options_for_select(Inscricao, :provas), {include_blank: "Escolha a prova"}, {class: "form-control form-select" } %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <%= f.select :sub_categoria, enum_options_for_select(Inscricao, :sub_categorias), {include_blank: "Escolha a sub categoria"}, {class: "form-control form-select" } %>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <%= f.select :tamanho_camisa, enum_options_for_select(Inscricao, :tamanho_camisas), {include_blank: "Escolha o tamanho da camisa"}, { class: "form-control form-select" } %>
+                        </div>
+                    </div> -->
+
+
+                    <div class="row">
+                        <div class="col-md-12 text-center mt-2">
+                            <button type="submit" class="btn bg-secondary text-primary fs-1 montserrat-bold px-5" style="">INSCREVER</button>
+                        </div>
+                    </div>
+                    <div class="mt-5">
+                        <% if @inscricao.errors.present? %>
+                            <div class="alert alert-danger" role="alert">
+                                <h4 class="alert-heading">Erro</h4>
+                                <% @inscricao.errors.full_messages.each do |message| %>
+                                    <p><%= message %></p>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <% if flash[:notice].present? %>
+                            <div class="alert alert-success" role="alert">
+                                <h4 class="alert-heading">Sucesso</h4>
+                                <p>Inscrição realizada com sucesso!</p>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        <% else %>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2 text-center">
+                    <h2 class="montserrat-bold fs-50 text-white">Quantidade de vagas <span class="color-secondary">esgotadas!</span></h2>
+                    <p class="montserrat fs-3 fw-normal text-white"><%= limite_vagas %> inscrições foram realizadas</p>
+                </div>
+            </div>
+        <% end %>
+    </div>
+    <div id="info-text" class="mt-5">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h3 class="text-white montserrat-bold fs-5 text-center mb-4">
+                    REGULAMENTO DA 1º CORRIDA DA FESTA DAS CRIANÇAS
+                </h3>
+                
+
+                
+          
+               <div class="text-center">
+                  <%= link_to "/REGULAMENTO 1º CORRIDA KIDS.pdf", class: "btn rounded text-white bg-primary fs-5", target: "_blank" do %>
+                      <i class="bi bi-filetype-pdf"></i> download do regulamento
+                  <% end %>
+
+                  <%= link_to "/TERMO DE RESPONSABILIDADE CORRIDA KIDS.docx", class: "btn rounded text-white bg-primary fs-5", target: "_blank" do %>
+                      <i class="bi bi-filetype-docx"></i> download do Termo de responsabilidade
+                  <% end %>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>

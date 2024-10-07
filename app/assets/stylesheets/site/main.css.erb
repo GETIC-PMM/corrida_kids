@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;900&display=swap');
+
+/* constants */
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.montserrat-bold {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.line-height-1 {
+    line-height: 1.25em;
+}
+.color-primary {color: #00a7ce !important;}
+.color-secondary {color: #ffcc00 !important;}
+.primary-accent {color: #00fff6 !important;}
+.bg-primary {background-color: #00a7ce !important;}
+.bg-secondary {background-color: #ffcc00 !important;}
+.fs-50 {
+    font-size: 50px;
+}
+
+/* init site */
+
+/* header */
+.topo {
+    background: #009640;
+    padding: 5px 0px;
+}
+.topo .redes-sociais a {
+    display: table;
+    width: 25px;
+    height: 25px;
+    background: #fff;
+    border-radius: 50px;
+    margin-right: 10px;
+}
+.topo .redes-sociais a:hover {
+    background: #023E84;
+}
+.topo .redes-sociais a svg{
+    font-size: 16px;
+    color: #009640;
+}
+.topo .acess span {
+    color: #fff;
+}
+.btn-accessibility {
+    background: transparent;
+    border: none;
+}
+/* fix .topo on top */
+.topo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+body {
+    padding-top: 47px;
+
+    /* background: url('../images/bg_all.jpg') repeat; */
+    background: #26439b url(<%= asset_path('site/bg_all.png') %>) no-repeat center center ;
+    background-size: 90% auto;
+}
+
+/* navbar toggler svg */
+.navbar-toggler svg {
+    color: #fff;
+    font-size: 30px;
+}
+
+.navbar-toggler {
+    color: rgba(255,255,255,.55);
+    border-color: rgba(255,255,255,.1);
+}
+
+.navbar-toggler-icon {
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+
+#form-inscricao input[type="text"], #form-inscricao input[type="email"], #form-inscricao select {
+    font-size: 20px;
+    border-radius: 20px;
+    padding: 10px 20px;
+}
+
+#form-inscricao button:hover {
+    box-shadow: 0px 0px 10px 0px #fff;
+}
+
+#info-text .btn.icon-only[aria-expanded="true"] i::before {
+    content: "\f2ea" !important;
+}
+
+/* media lg */
+@media (max-width: 1200px) {
+    .fs-50{
+        font-size: 1.8rem !important;
+    }
+    .fs-3{
+        font-size: 1.3rem !important;
+    }
+}
+
+/* media md */
+@media (max-width: 768px) {
+    
+}
+
+/* media sm */
+@media (max-width: 576px) {
+    
+}
+
+
+

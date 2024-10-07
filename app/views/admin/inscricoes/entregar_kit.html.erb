@@ -1,0 +1,54 @@
+<% remote = false if remote == nil %>
+<% id ||= Time.now.to_i %>
+
+<%- model_class=Inscricao -%>
+<% remote ||= remote || params.try(:[], :remote) %>
+
+<% content_for :breadcrumb do %>
+    <li class="breadcrumb-item">
+        <%= link_to model_class.model_name.human(count: 2).titleize, admin_inscricoes_path %>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">Entregar Kit</li>
+<% end %>
+
+<section id="create-form-container">
+    <h2>Entregar KIT</h2>
+
+    <%= error_messages(@inscricao) %>
+
+    <div class="row">
+        <div class="col-md-12">
+            <!-- commom bootstrap form -->
+            <div class="card mb-4">
+                <%= form_with(model: [:admin, @inscricao], url: confirmar_entrega_kit_admin_inscricao_path(@inscricao), data: { turbo: remote  }) do |form| %>
+                    <%= hidden_field_tag :remote, remote %>
+                    <!-- Note: Para adicionar campo obrigatório é só adicionar a classe '.label-required' no label. -->
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <%= form.label :sub_categoria, class: "form-label label-required"  %>
+                            <%= form.select :sub_categoria, enum_options_for_select(Inscricao, :sub_categoria), {include_blank: true}, { selected: form.object.sub_categoria, class: "form-control form-select" } %>
+                        </div>
+                        <div class="mb-3">
+                            <%= form.label :prova, class: "form-label label-required"  %>
+                            <%= form.select :prova, enum_options_for_select(Inscricao, :provas), {include_blank: true}, { selected: form.object.prova, class: "form-control form-select" } %>
+                        </div>
+                    </div>
+                    <div class="card-footer d-flex justify-content-end">
+                        <%= button_tag :class => 'd-inline-block btn btn-primary me-2', data: { disable_with: "Salvar <i class='bi bi-arrow-counterclockwise'></i>" } do  %>
+                            <i class="bi bi-save"></i> Entregar
+                        <% end %>
+                
+                        <% unless remote %>
+                            <%= link_to "<i class='bi bi-arrow-left'></i> #{t("helpers.links.back")}".html_safe, admin_inscricoes_path, :class=> "d-inline-block btn btn-secondary me-2" %>
+                        <% end %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
